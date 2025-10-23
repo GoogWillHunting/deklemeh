@@ -1,4 +1,4 @@
-<html data-theme="base44" lang="fa" dir="rtl"><head>
+d<html data-theme="base44" lang="fa" dir="rtl"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <title>دکلمه</title>
@@ -238,6 +238,38 @@
             </div>
           </div>
 
+<!-- بازدیدها -->
+<section class="backdrop-blur-xl bg-black/30 rounded-3xl p-6 sm:p-8 mb-12 border border-yellow-500/30 shadow-2xl max-w-4xl mx-auto">
+  <div class="flex items-center justify-center gap-2 sm:gap-3 mb-6">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    <h2 class="text-xl sm:text-2xl font-semibold text-yellow-400">بازدیدهای سایت</h2>
+  </div>
+
+  <div id="stats" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 text-center">
+    <div class="backdrop-blur-lg bg-yellow-500/20 rounded-2xl p-4 border border-yellow-500/40 shadow-lg">
+      <div class="text-3xl font-bold text-yellow-400 mb-1" id="vc-today">–</div>
+      <div class="text-xs sm:text-sm text-yellow-200/80 font-medium">امروز</div>
+    </div>
+    <div class="backdrop-blur-lg bg-yellow-500/20 rounded-2xl p-4 border border-yellow-500/40 shadow-lg">
+      <div class="text-3xl font-bold text-yellow-400 mb-1" id="vc-yesterday">–</div>
+      <div class="text-xs sm:text-sm text-yellow-200/80 font-medium">دیروز</div>
+    </div>
+    <div class="backdrop-blur-lg bg-yellow-500/20 rounded-2xl p-4 border border-yellow-500/40 shadow-lg">
+      <div class="text-3xl font-bold text-yellow-400 mb-1" id="vc-week">–</div>
+      <div class="text-xs sm:text-sm text-yellow-200/80 font-medium">این هفته (دوشنبه–یکشنبه)</div>
+    </div>
+    <div class="backdrop-blur-lg bg-yellow-500/20 rounded-2xl p-4 border border-yellow-500/40 shadow-lg">
+      <div class="text-3xl font-bold text-yellow-400 mb-1" id="vc-month">–</div>
+      <div class="text-xs sm:text-sm text-yellow-200/80 font-medium">این ماه</div>
+    </div>
+  </div>
+
+  <div class="text-center text-sm text-yellow-300/60 mt-4">
+    مجموع یکتا (حدودی): <span id="vc-total">–</span>
+  </div>
+</section>
+
+
           <div class="text-center pt-6 border-t border-yellow-500/30">
             <p class="text-yellow-300/60">© ۱۴۰۳ مسابقه دکلمه آبان ماه - تمامی حقوق برای حکایت شب محفوظ است</p>
           </div>
@@ -290,6 +322,99 @@
       const timer = setInterval(tick, 1000);
     })();
   </script>
+<script>
+/**
+ * View Counter (CountAPI) — یکتا «تقریباً»: هر مرورگر یک‌بار در هر دوره
+ * محدودیت‌ها: بدون فیلتر بات، قابل دست‌کاری با پاک‌کردن localStorage/ناشناس.
+ */
+(function () {
+  const API = "https://api.countapi.xyz";
+  // نام‌فضا: دامنه + (اختیاری) مسیر. اگر می‌خواهی «کل سایت» باشد، فقط host کافی‌ست.
+  const NS = encodeURIComponent(location.host); // یا: encodeURIComponent(location.host + location.pathname)
+
+  // --- ابزار تاریخ ---
+  const pad = n => String(n).padStart(2, "0");
+  const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+
+  // امروز/دیروز (به زمان مرورگر کاربر)
+  const today = new Date();
+  const yesterday = new Date(today); yesterday.setDate(today.getDate() - 1);
+
+  // هفته: دوشنبه تا یکشنبه (سبک ایران)
+  function getIranWeekKey(d){
+    // تبدیل به UTC برای محاسبه پایدار
+    const tmp = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // در JS: 0=یکشنبه. ما می‌خواهیم 0=دوشنبه…6=یکشنبه
+    const jsDay = tmp.getUTCDay(); // 0..6
+    const dow = (jsDay + 6) % 7;   // 0=دوشنبه … 6=یکشنبه
+    const monday = new Date(tmp); monday.setUTCDate(tmp.getUTCDate() - dow);
+    // شماره هفته ساده برحسب فاصله از اولین دوشنبه سال
+    const first = new Date(Date.UTC(monday.getUTCFullYear(), 0, 1));
+    const firstDow = (first.getUTCDay() + 6) % 7;
+    const firstMon = new Date(first); firstMon.setUTCDate(first.getUTCDate() - firstDow);
+    const w = 1 + Math.floor((monday - firstMon) / 604800000);
+    return `${monday.getUTCFullYear()}-W${pad(w)}`;
+  }
+  const weekKey  = getIranWeekKey(today);
+  const monthKey = `${today.getFullYear()}-${pad(today.getMonth()+1)}`;
+
+  // کلیدها
+  const KEYS = {
+    dayToday:  `day:${ymd(today)}`,
+    dayYest:   `day:${ymd(yesterday)}`,
+    week:      `week:${weekKey}`,
+    month:     `month:${monthKey}`,
+    total:     `total:site`
+  };
+
+  // یک‌بار در هر دوره (لوکال)
+  const ls = window.localStorage;
+  const marks = {
+    total: `vc:seen:total`,
+    day:   `vc:seen:day:${ymd(today)}`,
+    week:  `vc:seen:week:${weekKey}`,
+    month: `vc:seen:month:${monthKey}`,
+  };
+
+  const incs = [];
+  if (!ls.getItem(marks.total)) { incs.push(hit(KEYS.total)); ls.setItem(marks.total, "1"); }
+  if (!ls.getItem(marks.day))   { incs.push(hit(KEYS.dayToday)); ls.setItem(marks.day, "1"); }
+  if (!ls.getItem(marks.week))  { incs.push(hit(KEYS.week)); ls.setItem(marks.week, "1"); }
+  if (!ls.getItem(marks.month)) { incs.push(hit(KEYS.month)); ls.setItem(marks.month, "1"); }
+
+  Promise.allSettled(incs).then(loadAll).catch(loadAll);
+
+  function el(id){ return document.getElementById(id); }
+  function set(id, val){ const e = el(id); if (e) e.textContent = (val ?? 0); }
+
+  async function loadAll(){
+    const [t, y, w, m, tot] = await Promise.all([
+      get(KEYS.dayToday), get(KEYS.dayYest), get(KEYS.week), get(KEYS.month), get(KEYS.total)
+    ]);
+    set("vc-today", t);
+    set("vc-yesterday", y);
+    set("vc-week", w);
+    set("vc-month", m);
+    set("vc-total", tot);
+  }
+
+  async function get(key){
+    try{
+      const r = await fetch(`${API}/get/${NS}/${encodeURIComponent(key)}`, {cache:"no-store"});
+      if (!r.ok) return 0;
+      const j = await r.json();
+      return j.value ?? 0;
+    }catch{ return 0; }
+  }
+
+  async function hit(key){
+    try{
+      await fetch(`${API}/hit/${NS}/${encodeURIComponent(key)}`, {method:"GET", cache:"no-store"});
+    }catch{}
+  }
+})();
+</script>
+
 
 
 
