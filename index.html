@@ -3,140 +3,222 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>آخرین ویدیوها – Deklemeh</title>
-  <meta name="description" content="Watch my latest YouTube videos and subscribe." />
-  <link rel="icon" type="image/x-icon" href="https://rawcdn.githack.com/GoogWillHunting/hekayatshab/main/favicon.ico">
+  <title>آخرین ویدیوها</title>
+  <meta name="description" content="Watch my latest 5 YouTube Shorts and subscribe." />
+  <link rel="icon" href="https://raw.githubusercontent.com/GoogWillHunting/hekayatshab/refs/heads/main/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --gold:#d4af37; --gold-2:#c6a031; --black:#0b0b0c; --text:#e9e9ec; --gap:16px; --visible:5; }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 800px at 80% -10%,rgba(212,175,55,.08),transparent 60%),radial-gradient(900px 600px at -10% 110%,rgba(212,175,55,.08),transparent 60%),var(--black);color:var(--text);line-height:1.5;display:flex;flex-direction:column;min-height:100vh}
-    .container{max-width:1100px;margin:0 auto;padding:24px;flex:1 0 auto}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 12px;border-bottom:1px solid rgba(212,175,55,.25);position:sticky;top:0;backdrop-filter:blur(5px);background:linear-gradient(180deg,rgba(11,11,12,.85),rgba(11,11,12,.55));z-index:20}
-    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text)}
-    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:grid;place-items:center;box-shadow:0 6px 24px rgba(212,175,55,.25),inset 0 1px 0 rgba(255,255,255,.35);overflow:hidden}
-    .logo img{width:100%;height:100%;object-fit:cover;display:block}
-    .brand h1{font-size:1.25rem;margin:0;letter-spacing:.3px}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:700;letter-spacing:.3px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;text-decoration:none;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(212,175,55,.35),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s ease,filter .15s ease;white-space:nowrap}
-    .cta:hover{transform:translateY(-1px);filter:saturate(1.05)}
-    .cta:active{transform:translateY(0);filter:saturate(.98)}
+    :root {
+      --gold: #d4af37; /* rich gold */
+      --gold-2: #c6a031; /* slightly darker gold for gradients */
+      --black: #0b0b0c;
+      --text: #e9e9ec;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(212,175,55,0.08), transparent 60%),
+                  radial-gradient(900px 600px at -10% 110%, rgba(212,175,55,0.08), transparent 60%),
+                  var(--black);
+      color: var(--text);
+      line-height: 1.5;
+    }
 
-    .hero{display:grid;gap:14px;padding:28px 0}
-    .hero h2{font-size:clamp(1.5rem,1rem + 2.2vw,2.2rem);margin:0}
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(212,175,55,.18);border-radius:18px;padding:12px;box-shadow:0 8px 28px rgba(0,0,0,.45);display:grid;gap:10px;margin-bottom:40px}
-    .player-wrap{aspect-ratio:9/16;width:100%;border-radius:12px;overflow:hidden;background:#000;position:relative}
-    .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .playoverlay{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
-    .playoverlay span{padding:10px 14px;border-radius:999px;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.5);color:var(--text);font-weight:700;font-size:.85rem}
-    .title{font-size:.95rem;min-height:2.6em;color:var(--text);opacity:.95}
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 0 12px; border-bottom: 1px solid rgba(212,175,55,0.25);
+      position: sticky; top: 0; backdrop-filter: blur(5px);
+      background: linear-gradient(180deg, rgba(11,11,12,0.85), rgba(11,11,12,0.55)); z-index: 20;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--text); }
+    .logo { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--gold), var(--gold-2)); display: grid; place-items: center; box-shadow: 0 6px 24px rgba(212,175,55,0.25), inset 0 1px 0 rgba(255,255,255,0.35); overflow: hidden; }
+    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand h1 { font-size: 1.25rem; margin: 0; letter-spacing: 0.3px; }
 
-    /* Carousel */
-    .carousel{position:relative;overflow:hidden}
-    .track{display:flex;gap:var(--gap);will-change:transform;scroll-behavior:smooth;overflow:hidden}
-    .slide{flex:0 0 calc((100% - (var(--gap)*(var(--visible) - 1))) / var(--visible))}
-    .nav{position:absolute;inset-inline:0;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none}
-    .nav button{pointer-events:auto;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.5);color:var(--text);font-weight:700;border-radius:999px;padding:8px 12px;cursor:pointer}
+    .cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 999px; font-weight: 700; letter-spacing: 0.3px; background: linear-gradient(135deg, var(--gold), var(--gold-2)); color: #111; text-decoration: none; border: 0; cursor: pointer; box-shadow: 0 8px 24px rgba(212,175,55,0.35), inset 0 1px 0 rgba(255,255,255,0.4); transition: transform 0.15s ease, filter 0.15s ease; white-space: nowrap; }
+    .cta:hover { transform: translateY(-1px); filter: saturate(1.05); }
+    .cta:active { transform: translateY(0); filter: saturate(0.98); }
 
-    @media(max-width:960px){ :root{--visible:2} }
-    @media(max-width:600px){ :root{--visible:1} }
+    .hero { display: grid; gap: 14px; padding: 28px 0; }
+    .hero h2 { font-size: clamp(1.5rem, 1rem + 2.2vw, 2.2rem); margin: 0; }
 
-    footer{flex-shrink:0;padding:24px 0;margin-top:auto;border-top:1px solid rgba(212,175,55,.2);text-align:center;opacity:.9}
+    .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .grid { grid-template-columns: repeat(5, 1fr); } }
+
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border: 1px solid rgba(212,175,55,0.18); border-radius: 18px; padding: 10px; box-shadow: 0 8px 28px rgba(0,0,0,0.45); display: grid; gap: 10px; }
+    .player-wrap { aspect-ratio: 9/16; width: 100%; border-radius: 12px; overflow: hidden; background: #000; position: relative; }
+    .thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .playoverlay { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+    .playoverlay span { padding: 10px 14px; border-radius: 999px; background: rgba(0,0,0,.55); border: 1px solid rgba(212,175,55,.5); color: var(--text); font-weight: 700; font-size: .85rem; }
+    iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    .title { font-size: .95rem; min-height: 2.6em; color: var(--text); opacity: .95; }
+    .meta-row { display: flex; align-items: center; justify-content: space-between; font-size: .85rem; opacity: .8; }
+    .pill { border: 1px solid rgba(212,175,55,0.35); color: var(--gold); border-radius: 999px; padding: 2px 8px; font-weight: 600; font-size: .75rem; }
+
+    .footer { display: grid; gap: 10px; padding: 20px 0 40px; opacity: 0.9; border-top: 1px solid rgba(212,175,55,0.2); margin-top: 26px; font-size: 0.95rem; }
+
+    /* Sparkles */
+    .sparkle { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, var(--gold) 40%, rgba(212,175,55,0) 70%); filter: blur(0.2px); opacity: 0.8; animation: twinkle 2.4s ease-in-out infinite; }
+    .s1 { top: 18vh; left: 6vw; animation-delay: .1s }
+    .s2 { top: 72vh; left: 82vw; animation-delay: .6s }
+    .s3 { top: 38vh; left: 48vw; animation-delay: 1.1s }
+    @keyframes twinkle { 0%,100%{ transform: scale(0.8); opacity: .6 } 50%{ transform: scale(1.2); opacity: 1 } }
   </style>
 </head>
 <body>
+  <div class="sparkle s1" aria-hidden="true"></div>
+  <div class="sparkle s2" aria-hidden="true"></div>
+  <div class="sparkle s3" aria-hidden="true"></div>
+
   <div class="container">
     <header>
       <a class="brand" href="https://www.youtube.com/channel/UCT81gNGP4JzSgz_g6nvyaag" target="_blank" rel="noopener">
         <div class="logo"><img id="channelAvatar" src="" alt="Channel logo" /></div>
         <h1>Deklemeh</h1>
       </a>
-      <a class="cta" href="https://www.youtube.com/channel/UCT81gNGP4JzSgz_g6nvyaag?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+      <a class="cta" href="https://www.youtube.com/channel/UCT81gNGP4JzSgz_g6nvyaag?sub_confirmation=1" target="_blank" rel="noopener" aria-label="Go to YouTube to Subscribe">Subscribe</a>
     </header>
 
     <section class="hero">
       <h2 dir="rtl">آخرین ویدیوها</h2>
     </section>
 
-    <section class="card">
-      <div class="carousel" id="yt_carousel">
-        <div class="track" id="yt_track"></div>
-        <div class="nav">
-          <button id="yt_prev">‹</button>
-          <button id="yt_next">›</button>
-        </div>
-      </div>
+    <section id="feed" class="grid" aria-live="polite">
+      <!-- Cards injected by JS (YouTube Data API v3) -->
     </section>
-  </div>
 
-  <footer>
-    <p>© <span id="year"></span> Deklemeh. Not affiliated with YouTube.</p>
-  </footer>
+    <footer class="footer">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <span class="pill">Hekayat Shab</span>
+      </div>
+      <small>© <span id="year"></span> Deklemeh. Not affiliated with YouTube.</small>
+    </footer>
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const API_KEY = 'AIzaSyD9Z6yhvEmxkqKYVHB4TJAun8PTN2saIgg';
+
+    // ====== CONFIG – paste your API key here ======
+    const API_KEY = 'AIzaSyD9Z6yhvEmxkqKYVHB4TJAun8PTN2saIgg'; // <- replace this
     const CHANNEL_ID = 'UCT81gNGP4JzSgz_g6nvyaag';
+    const MAX_ITEMS = 5;
 
-    async function fetchAllVideos(channelId) {
-      let pageToken; const all=[];
-      while(all.length < 200){
-        const u = new URL('https://www.googleapis.com/youtube/v3/search');
-        u.search = new URLSearchParams({ key:API_KEY, part:'snippet', channelId, order:'date', type:'video', maxResults:'50', ...(pageToken?{pageToken}:{}) }).toString();
-        const r = await fetch(u.toString());
-        if(!r.ok) break;
-        const j = await r.json();
-        const vids=(j.items||[]).map(it=>({id:it.id.videoId,title:it.snippet.title}));
-        all.push(...vids); pageToken=j.nextPageToken; if(!pageToken) break;
-      }
-      return all;
-    }
+    // Channel details endpoint to get the avatar
+    const CHANNELS_URL = new URL('https://www.googleapis.com/youtube/v3/channels');
+    CHANNELS_URL.search = new URLSearchParams({
+      key: API_KEY,
+      part: 'snippet',
+      id: CHANNEL_ID
+    }).toString();
 
-    function makeSlide(id,title){
-      const el=document.createElement('article');
-      el.className='card slide';
-      el.innerHTML=`<a class="player-wrap" href="https://www.youtube.com/watch?v=${id}" target="_blank"><img class="thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg"><div class="playoverlay"><span>مشاهده</span></div></a><div class="title">${title}</div>`;
-      return el;
-    }
+    // Fetch the latest videos from your channel. We request only videos and prefer short duration.
+    // Note: videoDuration=short means < 4 minutes (YouTube doesn't expose a strict "Shorts" flag in API).
+    const SEARCH_URL = new URL('https://www.googleapis.com/youtube/v3/search');
+    SEARCH_URL.search = new URLSearchParams({
+      key: API_KEY,
+      part: 'snippet',
+      channelId: CHANNEL_ID,
+      order: 'date',
+      maxResults: String(MAX_ITEMS),
+      type: 'video',
+      videoDuration: 'short'
+    }).toString();
+    SEARCH_URL.search = new URLSearchParams({
+      key: API_KEY,
+      part: 'snippet',
+      channelId: CHANNEL_ID,
+      order: 'date',
+      maxResults: String(MAX_ITEMS),
+      type: 'video',
+      videoDuration: 'short'
+    }).toString();
 
-    function bindCarousel(track,prev,next){
-      const step=()=>track.clientWidth/parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--visible'));
-      const maxScroll=()=>Math.max(0,track.scrollWidth-track.clientWidth);
-      prev.addEventListener('click',()=>{if(track.scrollLeft<=0)track.scrollLeft=maxScroll();track.scrollBy({left:-step(),behavior:'smooth'});});
-      next.addEventListener('click',()=>{if(track.scrollLeft+track.clientWidth>=track.scrollWidth-2)track.scrollLeft=0;track.scrollBy({left:step(),behavior:'smooth'});});
-    }
-
-    async function loadChannelLogo(){
-      try{
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${CHANNEL_ID}&key=${API_KEY}`);
-        if(!res.ok) throw 0;
+    async function loadFeed() {
+      const feedEl = document.getElementById('feed');
+      try {
+        if (!API_KEY || API_KEY.includes('PASTE_YOUR')) throw new Error('Missing API key.');
+        const res = await fetch(SEARCH_URL.toString());
+        if (!res.ok) {
+          let detail = '';
+          try {
+            const txt = await res.text();
+            try { detail = JSON.stringify(JSON.parse(txt), null, 2); }
+            catch { detail = txt; }
+          } catch {}
+          throw new Error(`HTTP ${res.status}. ${detail}`);
+        }
         const data = await res.json();
-        const t = data.items?.[0]?.snippet?.thumbnails || {};
+        const items = data.items || [];
+        if (!items.length) throw new Error('No videos returned.');
+
+        for (const it of items) {
+          const id = it.id?.videoId || '';
+          const title = it.snippet?.title || 'Untitled';
+          const publishedAt = it.snippet?.publishedAt || '';
+          const thumbs = it.snippet?.thumbnails || {};
+          const bestThumb = thumbs.maxres?.url || thumbs.high?.url || thumbs.medium?.url || thumbs.default?.url || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+          const date = publishedAt ? new Date(publishedAt) : null;
+          const dateStr = date ? date.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'}) : '';
+
+          const card = document.createElement('article');
+          card.className = 'card';
+          card.innerHTML = `
+            <a class="player-wrap" href="https://www.youtube.com/shorts/${id}" target="_blank" rel="noopener" aria-label="Open short">
+              <img class="thumb" src="${bestThumb}" alt="Thumbnail" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg';"/>
+              <div class="playoverlay"><span>Watch</span></div>
+            </a>
+            <div class="title">${escapeHtml(title)}</div>
+            <div class="meta-row">
+              <span>${dateStr}</span>
+              <a class="pill" href="https://www.youtube.com/shorts/${id}" target="_blank" rel="noopener">Open</a>
+            </div>`;
+          feedEl.appendChild(card);
+        }
+      } catch (err) {
+        console.error(err);
+        feedEl.innerHTML = `
+          <div class="card" role="status">
+            Failed to load via API: ${escapeHtml(String(err.message))}
+            <div style="margin-top:8px"><a class="pill" href="https://www.youtube.com/channel/${CHANNEL_ID}/shorts" target="_blank" rel="noopener">See Shorts</a></div>
+          </div>`;
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>\"]/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[ch]));
+    }
+
+    async function loadChannelLogo() {
+      try {
+        const el = document.getElementById('channelAvatar');
+        if (!el) return;
+        const res = await fetch(CHANNELS_URL.toString());
+        if (!res.ok) throw new Error('logo ' + res.status);
+        const data = await res.json();
+        const sn = data.items?.[0]?.snippet;
+        const t = sn?.thumbnails || {};
         const src = t.high?.url || t.medium?.url || t.default?.url;
+        if (src) el.src = src; else throw new Error('no thumb');
+      } catch (e) {
+        // Fallback: simple inline SVG placeholder with YT letters
         const el = document.getElementById('channelAvatar');
-        if (src && el) el.src = src;
-      }catch(e){
-        const el = document.getElementById('channelAvatar');
-        if(el){
+        if (el) {
           const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='12' fill='black'/><text x='50%' y='54%' text-anchor='middle' font-family='Poppins, Arial' font-weight='700' font-size='14' fill='#d4af37'>YT</text></svg>`);
           el.src = `data:image/svg+xml;charset=utf-8,${svg}`;
         }
       }
     }
-    async function init(){
-      await loadChannelLogo();
-      const track=document.getElementById('yt_track');
-      const prev=document.getElementById('yt_prev');
-      const next=document.getElementById('yt_next');
-      const vids=await fetchAllVideos(CHANNEL_ID);
-      for(const v of vids){track.appendChild(makeSlide(v.id,v.title));}
-      bindCarousel(track,prev,next);
-    }
 
-    window.addEventListener('DOMContentLoaded',init,{once:true});
+    loadChannelLogo();
+    loadFeed();
   </script>
 </body>
 </html>
