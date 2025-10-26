@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>آخرین ویدیوها – Deklemeh</title>
-  <meta name="description" content="Watch my latest YouTube videos and subscribe." />
+  <meta name="description" content="نمایش همه ویدیوهای کانال Deklemeh به‌صورت کاروسل." />
   <link rel="icon" type="image/x-icon" href="https://rawcdn.githack.com/GoogWillHunting/hekayatshab/main/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,56 +13,65 @@
     :root { --gold:#d4af37; --gold-2:#c6a031; --black:#0b0b0c; --text:#e9e9ec; --gap:16px; --visible:5; }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 800px at 80% -10%,rgba(212,175,55,.08),transparent 60%),radial-gradient(900px 600px at -10% 110%,rgba(212,175,55,.08),transparent 60%),var(--black);color:var(--text);line-height:1.5;display:flex;flex-direction:column;min-height:100vh}
+    body{
+      margin:0;min-height:100vh;display:flex;flex-direction:column;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1200px 800px at 80% -10%,rgba(212,175,55,.08),transparent 60%),
+                 radial-gradient(900px 600px at -10% 110%,rgba(212,175,55,.08),transparent 60%),
+                 var(--black);
+      color:var(--text);line-height:1.5;
+    }
     .container{max-width:1100px;margin:0 auto;padding:24px;flex:1 0 auto}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 12px;border-bottom:1px solid rgba(212,175,55,.25);position:sticky;top:0;backdrop-filter:blur(5px);background:linear-gradient(180deg,rgba(11,11,12,.85),rgba(11,11,12,.55));z-index:20}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:20px 0 12px;border-bottom:1px solid rgba(212,175,55,.25);
+      position:sticky;top:0;backdrop-filter:blur(5px);
+      background:linear-gradient(180deg,rgba(11,11,12,.85),rgba(11,11,12,.55));z-index:20}
     .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text)}
-    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:grid;place-items:center;box-shadow:0 6px 24px rgba(212,175,55,.25),inset 0 1px 0 rgba(255,255,255,.35);overflow:hidden}
+    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      display:grid;place-items:center;box-shadow:0 6px 24px rgba(212,175,55,.25),inset 0 1px 0 rgba(255,255,255,.35);overflow:hidden}
     .logo img{width:100%;height:100%;object-fit:cover;display:block}
-    .brand h1{font-size:1.25rem;margin:0;letter-spacing:.3px}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:700;letter-spacing:.3px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;text-decoration:none;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(212,175,55,.35),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s ease,filter .15s ease;white-space:nowrap}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:700;
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;text-decoration:none;cursor:pointer;
+      box-shadow:0 8px 24px rgba(212,175,55,.35),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s ease,filter .15s ease}
     .cta:hover{transform:translateY(-1px);filter:saturate(1.05)}
-    .cta:active{transform:translateY(0);filter:saturate(.98)}
-
     .hero{display:grid;gap:14px;padding:28px 0}
-    .hero h2{font-size:clamp(1.5rem,1rem + 2.2vw,2.2rem);margin:0}
-
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(212,175,55,.18);border-radius:18px;padding:12px;box-shadow:0 8px 28px rgba(0,0,0,.45);display:grid;gap:10px;margin-bottom:40px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+      border:1px solid rgba(212,175,55,.18);border-radius:18px;padding:12px;box-shadow:0 8px 28px rgba(0,0,0,.45);
+      display:grid;gap:10px;margin-bottom:40px}
     .player-wrap{aspect-ratio:9/16;width:100%;border-radius:12px;overflow:hidden;background:#000;position:relative}
-    .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .playoverlay{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
-    .playoverlay span{padding:10px 14px;border-radius:999px;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.5);color:var(--text);font-weight:700;font-size:.85rem}
+    .playoverlay span{padding:10px 14px;border-radius:999px;background:rgba(0,0,0,.55);
+      border:1px solid rgba(212,175,55,.5);color:var(--text);font-weight:700;font-size:.85rem}
     .title{font-size:.95rem;min-height:2.6em;color:var(--text);opacity:.95}
-
-    /* Carousel */
     .carousel{position:relative;overflow:hidden}
     .track{display:flex;gap:var(--gap);will-change:transform;scroll-behavior:smooth;overflow:hidden}
     .slide{flex:0 0 calc((100% - (var(--gap)*(var(--visible) - 1))) / var(--visible))}
-    .nav{position:absolute;inset-inline:0;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none}
-    .nav button{pointer-events:auto;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.5);color:var(--text);font-weight:700;border-radius:999px;padding:8px 12px;cursor:pointer}
-
+    .nav{position:absolute;inset-inline:0;top:50%;transform:translateY(-50%);
+      display:flex;justify-content:space-between;pointer-events:none}
+    .nav button{pointer-events:auto;background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.5);
+      color:var(--text);font-weight:700;border-radius:999px;padding:8px 12px;cursor:pointer}
+    footer{flex-shrink:0;padding:24px 0;margin-top:auto;border-top:1px solid rgba(212,175,55,.2);text-align:center;opacity:.9}
     @media(max-width:960px){ :root{--visible:2} }
     @media(max-width:600px){ :root{--visible:1} }
-
-    footer{flex-shrink:0;padding:24px 0;margin-top:auto;border-top:1px solid rgba(212,175,55,.2);text-align:center;opacity:.9}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <a class="brand" href="https://www.youtube.com/channel/UCT81gNGP4JzSgz_g6nvyaag" target="_blank" rel="noopener">
-        <div class="logo"><img id="channelAvatar" src="" alt="Channel logo" /></div>
+        <div class="logo"><img id="channelAvatar" alt="Channel logo" /></div>
         <h1>Deklemeh</h1>
       </a>
-      <a class="cta" href="https://www.youtube.com/channel/UCT81gNGP4JzSgz_g6nvyaag?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+      <a class="cta" href="https://www.youtube.com/channel/UCT81gNGP4JzSgz_g6nvyaag?sub_confirmation=1" target="_blank">Subscribe</a>
     </header>
 
     <section class="hero">
-      <h2 dir="rtl">آخرین ویدیوها</h2>
+      <h2>آخرین ویدیوها</h2>
     </section>
 
     <section class="card">
-      <div class="carousel" id="yt_carousel">
+      <div class="carousel">
         <div class="track" id="yt_track"></div>
         <div class="nav">
           <button id="yt_prev">‹</button>
@@ -81,58 +90,74 @@
     const API_KEY = 'AIzaSyD9Z6yhvEmxkqKYVHB4TJAun8PTN2saIgg';
     const CHANNEL_ID = 'UCT81gNGP4JzSgz_g6nvyaag';
 
-    async function fetchAllVideos(channelId) {
-      let pageToken; const all=[];
-      while(all.length < 200){
-        const u = new URL('https://www.googleapis.com/youtube/v3/search');
-        u.search = new URLSearchParams({ key:API_KEY, part:'snippet', channelId, order:'date', type:'video', maxResults:'50', ...(pageToken?{pageToken}:{}) }).toString();
-        const r = await fetch(u.toString());
-        if(!r.ok) break;
-        const j = await r.json();
-        const vids=(j.items||[]).map(it=>({id:it.id.videoId,title:it.snippet.title}));
-        all.push(...vids); pageToken=j.nextPageToken; if(!pageToken) break;
+    const escapeHtml = s => String(s||'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+
+    async function loadChannelLogo(){
+      try{
+        const res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${CHANNEL_ID}&key=${API_KEY}`);
+        const data = await res.json();
+        const src = data.items?.[0]?.snippet?.thumbnails?.high?.url;
+        if (src) document.getElementById('channelAvatar').src = src;
+      }catch{
+        const el=document.getElementById('channelAvatar');
+        if(el){
+          const svg=encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='12' fill='black'/><text x='50%' y='54%' text-anchor='middle' font-family='Poppins, Arial' font-weight='700' font-size='14' fill='#d4af37'>YT</text></svg>`);
+          el.src=`data:image/svg+xml,${svg}`;
+        }
       }
-      return all;
+    }
+
+    const uploadsPlaylistId = cid => 'UU' + cid.slice(2);
+
+    async function fetchAllVideos(channelId, maxCount=200){
+      const pid = uploadsPlaylistId(channelId);
+      let pageToken, out=[];
+      while(out.length < maxCount){
+        const u=new URL('https://www.googleapis.com/youtube/v3/playlistItems');
+        u.search=new URLSearchParams({
+          key:API_KEY, part:'snippet', playlistId:pid, maxResults:'50', ...(pageToken?{pageToken}:{})
+        }).toString();
+        const r=await fetch(u.toString());
+        if(!r.ok) break;
+        const j=await r.json();
+        const items=(j.items||[]).map(it=>({
+          id:it.snippet?.resourceId?.videoId||'', title:it.snippet?.title||''
+        })).filter(v=>v.id);
+        out.push(...items);
+        pageToken=j.nextPageToken;
+        if(!pageToken) break;
+      }
+      return out;
     }
 
     function makeSlide(id,title){
       const el=document.createElement('article');
       el.className='card slide';
-      el.innerHTML=`<a class="player-wrap" href="https://www.youtube.com/watch?v=${id}" target="_blank"><img class="thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg"><div class="playoverlay"><span>مشاهده</span></div></a><div class="title">${title}</div>`;
+      el.innerHTML=`<a class="player-wrap" href="https://www.youtube.com/watch?v=${id}" target="_blank"><img class="thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" loading="lazy"><div class="playoverlay"><span>مشاهده</span></div></a><div class="title">${escapeHtml(title)}</div>`;
       return el;
     }
 
-    function bindCarousel(track,prev,next){
-      const step=()=>track.clientWidth/parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--visible'));
+    function bindCarousel(track, prevBtn, nextBtn){
+      const getVisible = ()=>parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--visible'))||5;
+      const step = ()=>track.clientWidth/getVisible();
       const maxScroll=()=>Math.max(0,track.scrollWidth-track.clientWidth);
-      prev.addEventListener('click',()=>{if(track.scrollLeft<=0)track.scrollLeft=maxScroll();track.scrollBy({left:-step(),behavior:'smooth'});});
-      next.addEventListener('click',()=>{if(track.scrollLeft+track.clientWidth>=track.scrollWidth-2)track.scrollLeft=0;track.scrollBy({left:step(),behavior:'smooth'});});
+      prevBtn.addEventListener('click',()=>{if(track.scrollLeft<=0)track.scrollLeft=maxScroll();track.scrollBy({left:-step(),behavior:'smooth'});});
+      nextBtn.addEventListener('click',()=>{if(track.scrollLeft+track.clientWidth>=track.scrollWidth-2)track.scrollLeft=0;track.scrollBy({left:step(),behavior:'smooth'});});
     }
 
-    async function loadChannelLogo(){
-      try{
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${CHANNEL_ID}&key=${API_KEY}`);
-        if(!res.ok) throw 0;
-        const data = await res.json();
-        const t = data.items?.[0]?.snippet?.thumbnails || {};
-        const src = t.high?.url || t.medium?.url || t.default?.url;
-        const el = document.getElementById('channelAvatar');
-        if (src && el) el.src = src;
-      }catch(e){
-        const el = document.getElementById('channelAvatar');
-        if(el){
-          const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' rx='12' fill='black'/><text x='50%' y='54%' text-anchor='middle' font-family='Poppins, Arial' font-weight='700' font-size='14' fill='#d4af37'>YT</text></svg>`);
-          el.src = `data:image/svg+xml;charset=utf-8,${svg}`;
-        }
-      }
-    }
     async function init(){
       await loadChannelLogo();
       const track=document.getElementById('yt_track');
       const prev=document.getElementById('yt_prev');
       const next=document.getElementById('yt_next');
-      const vids=await fetchAllVideos(CHANNEL_ID);
-      for(const v of vids){track.appendChild(makeSlide(v.id,v.title));}
+      track.innerHTML='';
+      try{
+        const vids=await fetchAllVideos(CHANNEL_ID);
+        if(!vids.length) throw 0;
+        for(const v of vids) track.appendChild(makeSlide(v.id,v.title));
+      }catch{
+        track.innerHTML='<div class="card">Failed to load videos.</div>';
+      }
       bindCarousel(track,prev,next);
     }
 
